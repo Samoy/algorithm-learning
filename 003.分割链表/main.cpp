@@ -6,24 +6,39 @@ class Solution
 public:
     ListNode *partition(ListNode *head, int x)
     {
-        ListNode *current = head;
-        ListNode *result = nullptr;
-        while (current != nullptr)
+        if (head == nullptr)
+            return nullptr;
+        // 创建两个新的伪头节点，用于构建小于x和大于等于x的链表
+        ListNode *before_head = new ListNode();
+        ListNode *after_head = new ListNode();
+
+        ListNode *before_curr = before_head;
+        ListNode *after_curr = after_head;
+
+        while (head)
         {
-            std::cout << current->val << std::endl;
-            // 如果小于x，放在前面
-            if (current->val < x)
+            if (head->val < x)
             {
-                result = current;
+                // 当前节点值小于x，添加到before链表
+                before_curr->next = head;
+                before_curr = before_curr->next;
             }
-            // 否则放在后面
             else
             {
-                result->next = current->next;
+                // 当前节点值大于等于x，添加到after链表
+                after_curr->next = head;
+                after_curr = after_curr->next;
             }
-            current = current->next;
+            // 移动原链表的头到下一个节点
+            head = head->next;
         }
-        return result;
+
+        // 将两个链表连接起来
+        after_curr->next = nullptr;           // 确保after链表末尾是NULL
+        before_curr->next = after_head->next; // 将before链表的尾部连接到after链表的头部
+
+        // 返回新链表的头节点，即before_head的下一个节点
+        return before_head->next;
     }
 };
 
