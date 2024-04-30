@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <../include/node.h>
+#include "../include/node.h"
 
 class Solution
 {
