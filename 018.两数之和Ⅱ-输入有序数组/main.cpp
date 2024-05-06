@@ -1,7 +1,5 @@
 #include <iostream>
-#include "../include/node.h"
-#include <stack>
-#include <queue>
+#include <vector>
 
 using namespace std;
 
