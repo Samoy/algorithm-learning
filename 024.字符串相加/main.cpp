@@ -1,7 +1,5 @@
 #include <iostream>
-#include <vector>
-#include <cmath>
-
+#include <string>
 using namespace std;
 
 
@@ -36,21 +34,13 @@ public:
     }
 };
 
-
-void print(const vector<int> &vec) {
-    std::cout << "[";
-    for (int i: vec) {
-        std::cout << i << ", ";
-    }
-    std::cout << "]" << std::endl;
-}
-
 int main(int argc, char const *argv[]) {
     Solution s{};
-//    cout << s.addStrings("11", "123") << endl;
-//    cout << s.addStrings("456", "77") << endl;
-//    cout << s.addStrings("0", "0") << endl;
-//    cout << s.addStrings("6913259244", "71103343") << endl;
+
+    cout << s.addStrings("11", "123") << endl;
+    cout << s.addStrings("456", "77") << endl;
+    cout << s.addStrings("0", "0") << endl;
+    cout << s.addStrings("6913259244", "71103343") << endl;
     cout << s.addStrings("9333852702227987", "85731737104263") << endl;
     return 0;
 }
