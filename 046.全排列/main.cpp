@@ -41,10 +41,11 @@ private:
 
 
 public:
-    vector<vector<int>> permute(vector<int> &nums) {
+    vector<vector<int>> permute(const vector<int> &nums) {
         // 使用回溯法进行求解
         vector<vector<int>> res;
-        backtrack(res, nums, 0);
+        vector<int> nums_copy = nums;
+        backtrack(res, nums_copy, 0);
         return res;
     }
 };
