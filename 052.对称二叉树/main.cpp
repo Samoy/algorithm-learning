@@ -17,6 +17,8 @@ private:
 
 public:
     bool isSymmetric(TreeNode *root) {
+        // 使用递归
+        // return isMirror(root,root);
         // 使用迭代
         queue<pair<TreeNode *, TreeNode *>> que;
         que.emplace(root, root);
