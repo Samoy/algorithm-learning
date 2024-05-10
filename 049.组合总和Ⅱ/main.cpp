@@ -19,7 +19,7 @@ void print2DVector(const std::vector<std::vector<int>> &vec2d) {
 
 class Solution {
 public:
-    vector<vector<int>> combinationSum(vector<int> &candidates, int target) {
+    vector<vector<int>> combinationSum2(vector<int> &candidates, int target) {
         sort(candidates.begin(), candidates.end());
         vector<vector<int>> res;
         vector<int> v;
@@ -36,16 +36,11 @@ private:
             return;
         }
         for (int i = start; i < nums.size(); ++i) {
-            // 若子集和超过 target ，则直接结束循环
-            // 这是因为数组已排序，后边元素更大，子集和一定超过 target
-            if (tar - nums[i] < 0) {
-                break;
-            }
-            // 尝试进行选择
+            if (i > start && nums[i] == nums[i - 1]) continue;
+            if (tar - nums[i] < 0)break;
             v.push_back(nums[i]);
-            // 进行下一轮选择
-            backtrack(v, nums, i, tar - nums[i], res);
-            // 回溯
+            // 进行下一次遍历
+            backtrack(v, nums, i + 1, tar - nums[i], res);
             v.pop_back();
         }
     }
@@ -53,9 +48,9 @@ private:
 
 int main(int argc, char const *argv[]) {
     Solution s{};
-    vector<int> candidates1{2, 3, 6, 7};
-    print2DVector(s.combinationSum(candidates1, 7));
-    vector<int> candidates2{2, 3, 5};
-    print2DVector(s.combinationSum(candidates2, 8));
+    vector<int> candidates1{10, 1, 2, 7, 6, 1, 5};
+    print2DVector(s.combinationSum2(candidates1, 8));
+    vector<int> candidates2{2, 5, 2, 1, 2};
+    print2DVector(s.combinationSum2(candidates2, 5));
     return 0;
 }
