@@ -1,6 +1,4 @@
 #include <iostream>
-#include <memoryapi.h>
-#include <functional>
 
 using namespace std;
 
